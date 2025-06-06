@@ -76,6 +76,22 @@ return {
       end,
       desc = 'Debug: See last session result.',
     },
+    {
+      '<leader>?',
+      function()
+        local dap = require 'dap'
+        local dapui = require 'dapui'
+
+        if not dap.session() then
+          vim.notify('No active debug session', vim.log.levels.WARN)
+          return
+        end
+
+        dapui.eval()
+      end,
+      mode = 'v',
+      desc = 'Debug: Evaluate selected expression',
+    },
   },
   config = function()
     local dap = require 'dap'
@@ -95,6 +111,7 @@ return {
       ensure_installed = {
         -- Update this to ensure that you have the debuggers for the langs you want
         'delve',
+        'codelldb',
       },
     }
 
