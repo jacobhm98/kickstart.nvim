@@ -75,6 +75,13 @@ return {
         end,
         desc = '[T]est [S]ummary Panel',
       },
+      {
+        '<leader>Td',
+        function()
+          require('neotest').run.run { strategy = 'dap' }
+        end,
+        desc = '[T]est [D]ebug Nearest',
+      },
     },
   },
 }
