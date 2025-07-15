@@ -776,7 +776,10 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettier' },
+        typescript = { 'prettier' },
         markdown = { 'prettier' },
+        xml = { 'prettier' },
+        yaml = { 'prettier' },
         java = { 'google-java-format' },
       },
     },
