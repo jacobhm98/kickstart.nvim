@@ -9,6 +9,10 @@ return {
     version = '^6', -- Recommended
     lazy = false, -- This plugin is already lazy
   },
+  {
+    'mfusenegger/nvim-jdtls',
+    lazy = false,
+  },
   -- test suite
   {
     'nvim-neotest/neotest',

@@ -682,7 +682,6 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {},
-        jdtls = {},
         --
 
         lua_ls = {
@@ -719,6 +718,7 @@ require('lazy').setup({
         'stylua', -- Used to format Lua code
         'prettier',
         'google-java-format',
+        'jdtls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
