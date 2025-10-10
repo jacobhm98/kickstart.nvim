@@ -2,6 +2,12 @@
 
 local lombok_jar = vim.fn.expand '~/.local/share/nvim/mason/packages/jdtls/lombok.jar'
 
+-- Set indent to match google-java-format (2 spaces)
+vim.bo.shiftwidth = 2
+vim.bo.tabstop = 2
+vim.bo.softtabstop = 2
+vim.bo.expandtab = true
+
 local config = {
   name = 'jdtls',
 
