@@ -10,7 +10,7 @@ return {
     lazy = false, -- This plugin is already lazy
   },
   {
-    'mfusenegger/nvim-jdtls',
+    'mfussenegger/nvim-jdtls',
     lazy = false,
   },
   -- test suite

@@ -681,8 +681,8 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        ts_ls = {},
-        --
+        vtsls = {},
+        vue_ls = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -719,11 +719,13 @@ require('lazy').setup({
         'prettier',
         'google-java-format',
         'jdtls',
+        'vtsls',
+        'vue_ls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
+        ensure_installed = { 'vtsls', 'vue_ls' }, -- Ensure handlers run for these servers
         automatic_installation = false,
         handlers = {
           function(server_name)
@@ -779,6 +781,7 @@ require('lazy').setup({
         javascriptreact = { 'prettier' },
         typescript = { 'prettier' },
         typescriptreact = { 'prettier' },
+        vue = { 'prettier' },
         markdown = { 'prettier' },
         xml = { 'prettier' },
         yaml = { 'prettier' },
