@@ -22,11 +22,16 @@ return {
       'antoinemadec/FixCursorHold.nvim',
       'nvim-treesitter/nvim-treesitter',
       'mrcjkb/rustaceanvim', -- Rust testrunner
+      'rcasia/neotest-java', -- Java testrunner
     },
     config = function()
       require('neotest').setup {
         adapters = {
           require 'rustaceanvim.neotest',
+          require 'neotest-java' {
+            -- If you want to customize the Java test runner, you can do so here
+            -- ignore_wrapper = false, -- whether to ignore maven/gradle wrapper
+          },
         },
       }
     end,

@@ -719,6 +719,8 @@ require('lazy').setup({
         'prettier',
         'google-java-format',
         'jdtls',
+        'java-debug-adapter',
+        'java-test',
         'vtsls',
         'vue_ls',
       })

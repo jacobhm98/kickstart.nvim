@@ -38,7 +38,12 @@ local config = {
   --
   -- If you don't plan on any eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {},
+    bundles = vim.list_extend(
+      -- Add the java-debug-adapter bundle
+      vim.split(vim.fn.glob(vim.fn.expand '~/.local/share/nvim/mason/packages/java-debug-adapter/extension/server/*.jar', true), '\n'),
+      -- Add the java-test bundles
+      vim.split(vim.fn.glob(vim.fn.expand '~/.local/share/nvim/mason/packages/java-test/extension/server/*.jar', true), '\n')
+    ),
   },
 
   -- Set up Java-specific keymaps after jdtls attaches
@@ -53,6 +58,28 @@ local config = {
     map('<leader>jv', require('jdtls').extract_variable, '[J]ava Extract [V]ariable')
     map('<leader>jc', require('jdtls').extract_constant, '[J]ava Extract [C]onstant')
     map('<leader>jm', require('jdtls').extract_method, '[J]ava Extract [M]ethod')
+
+    -- Set up DAP configurations for Java debugging
+    -- This enables debugging support with nvim-dap
+    require('jdtls').setup_dap { hotcodereplace = 'auto' }
+
+    -- Also add a simple attach configuration for Quarkus
+    -- This doesn't require jdtls to resolve anything
+    require('jdtls.dap').setup_dap_main_class_configs()
   end,
 }
 require('jdtls').start_or_attach(config)
+
+-- Add standalone DAP configuration for attaching to Quarkus
+-- This works independently of jdtls being attached
+local dap = require 'dap'
+dap.configurations.java = dap.configurations.java or {}
+
+-- Simple attach config for Quarkus (runs on port 5005 by default)
+table.insert(dap.configurations.java, {
+  type = 'java',
+  request = 'attach',
+  name = 'Attach to Quarkus (localhost:5005)',
+  hostName = 'localhost',
+  port = 5005,
+})
