@@ -92,8 +92,8 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
--- Disable Neovim's native jdtls config - we use nvim-jdtls in ftplugin/java.lua instead
-vim.lsp.config.jdtls = { filetypes = {} }
+-- Disable Neovim's native jdtls auto-start - we use nvim-jdtls in ftplugin/java.lua instead
+vim.lsp.enable('jdtls', false)
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
