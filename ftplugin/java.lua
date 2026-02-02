@@ -21,7 +21,7 @@ local config = {
 
   -- `root_dir` must point to the root of your project.
   -- See `:help vim.fs.root`
-  root_dir = vim.fs.root(0, { 'gradlew', '.git', 'mvnw' }),
+  root_dir = vim.fs.root(0, { 'pom.xml', 'build.gradle', 'build.gradle.kts', 'mvnw', 'gradlew', '.git' }),
 
   -- Here you can configure eclipse.jdt.ls specific settings
   -- See https://github.com/eclipse/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
